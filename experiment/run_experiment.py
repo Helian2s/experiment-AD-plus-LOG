@@ -17,7 +17,7 @@ from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
 
 # ── Налаштування ─────────────────────────────────────────────────────────────
-PROJECT_ROOT   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT   = os.path.dirname(os.path.abspath(__file__))
 COCO_IMG_DIR   = os.path.join(PROJECT_ROOT, 'coco', 'images', 'val2017')
 COCO_ANN_FILE  = os.path.join(PROJECT_ROOT, 'coco', 'annotations', 'instances_val2017.json')
 RESULTS_DIR    = os.path.join(PROJECT_ROOT, 'results')
