@@ -1,0 +1,437 @@
+RUN_INFO {"started_utc": "2026-10-02T23:17:48.941074+00:00", "images": 5000, "conditions": ["clean", "gaussian_noise", "blur", "low_light", "haze", "multifactor"], "results_dir": "<PROJECT_ROOT>/results/full_5000.AfmLxA", "torch_version": "2.14.1+cu130", "cuda_available": false, "known_limitations": ["YOLO to COCO class mapping not corrected", "low_light gamma still brightens images"]}
+============================================================
+Експеримент: AD + LoG для виявлення об'єктів
+============================================================
+Обрано 5000 зображень з 5000 доступних.
+Завантаження YOLO11n...
+YOLO11n summary (fused): 100 layers, 2,616,248 parameters, 0 gradients, 6.5 GFLOPs
+loading annotations into memory...
+Done (t=0.21s)
+creating index...
+index created!
+
+Умова деградації: clean
+clean:   0%|          | 0/5000 [00:00<?, ?it/s]clean:   2%|2         | 119/5000 [00:30<20:31,  3.96it/s]clean:   2%|2         | 119/5000 [00:50<20:31,  3.96it/s]clean:   5%|4         | 241/5000 [01:00<19:46,  4.01it/s]clean:   5%|4         | 241/5000 [01:20<19:46,  4.01it/s]clean:   7%|7         | 365/5000 [01:30<19:02,  4.06it/s]clean:   7%|7         | 365/5000 [01:50<19:02,  4.06it/s]clean:  10%|9         | 486/5000 [02:00<18:35,  4.05it/s]clean:  10%|9         | 486/5000 [02:20<18:35,  4.05it/s]clean:  12%|#2        | 615/5000 [02:30<17:42,  4.13it/s]clean:  12%|#2        | 615/5000 [02:50<17:42,  4.13it/s]clean:  15%|#4        | 746/5000 [03:00<16:52,  4.20it/s]clean:  15%|#4        | 746/5000 [03:20<16:52,  4.20it/s]clean:  17%|#7        | 872/5000 [03:31<16:25,  4.19it/s]clean:  17%|#7        | 872/5000 [03:50<16:25,  4.19it/s]clean:  20%|##        | 1005/5000 [04:01<15:38,  4.26it/s]clean:  20%|##        | 1005/5000 [04:20<15:38,  4.26it/s]clean:  23%|##2       | 1134/5000 [04:31<15:07,  4.26it/s]clean:  23%|##2       | 1134/5000 [04:50<15:07,  4.26it/s]clean:  25%|##5       | 1265/5000 [05:01<14:30,  4.29it/s]clean:  25%|##5       | 1265/5000 [05:20<14:30,  4.29it/s]clean:  28%|##7       | 1393/5000 [05:31<14:02,  4.28it/s]clean:  28%|##7       | 1393/5000 [05:50<14:02,  4.28it/s]clean:  30%|###       | 1525/5000 [06:01<13:25,  4.31it/s]clean:  30%|###       | 1525/5000 [06:20<13:25,  4.31it/s]clean:  33%|###3      | 1657/5000 [06:31<12:51,  4.33it/s]clean:  33%|###3      | 1657/5000 [06:50<12:51,  4.33it/s]clean:  36%|###5      | 1791/5000 [07:01<12:14,  4.37it/s]clean:  36%|###5      | 1791/5000 [07:20<12:14,  4.37it/s]clean:  38%|###8      | 1925/5000 [07:32<11:40,  4.39it/s]clean:  38%|###8      | 1925/5000 [07:50<11:40,  4.39it/s]clean:  41%|####1     | 2054/5000 [08:02<11:16,  4.36it/s]clean:  41%|####1     | 2054/5000 [08:20<11:16,  4.36it/s]clean:  44%|####3     | 2186/5000 [08:32<10:44,  4.37it/s]clean:  44%|####3     | 2186/5000 [08:50<10:44,  4.37it/s]clean:  46%|####6     | 2315/5000 [09:02<10:18,  4.34it/s]clean:  46%|####6     | 2315/5000 [09:20<10:18,  4.34it/s]clean:  49%|####8     | 2444/5000 [09:32<09:50,  4.33it/s]clean:  49%|####8     | 2444/5000 [09:50<09:50,  4.33it/s]clean:  51%|#####1    | 2574/5000 [10:02<09:21,  4.32it/s]clean:  51%|#####1    | 2574/5000 [10:20<09:21,  4.32it/s]clean:  54%|#####4    | 2705/5000 [10:32<08:50,  4.33it/s]clean:  54%|#####4    | 2705/5000 [10:50<08:50,  4.33it/s]clean:  57%|#####6    | 2838/5000 [11:02<08:16,  4.36it/s]clean:  57%|#####6    | 2838/5000 [11:20<08:16,  4.36it/s]clean:  59%|#####9    | 2970/5000 [11:32<07:44,  4.37it/s]clean:  59%|#####9    | 2970/5000 [11:50<07:44,  4.37it/s]clean:  62%|######1   | 3097/5000 [12:03<07:19,  4.33it/s]clean:  62%|######1   | 3097/5000 [12:20<07:19,  4.33it/s]clean:  65%|######4   | 3226/5000 [12:33<06:51,  4.31it/s]clean:  65%|######4   | 3226/5000 [12:50<06:51,  4.31it/s]clean:  67%|######7   | 3359/5000 [13:03<06:17,  4.35it/s]clean:  67%|######7   | 3359/5000 [13:20<06:17,  4.35it/s]clean:  70%|######9   | 3486/5000 [13:33<05:51,  4.31it/s]clean:  70%|######9   | 3486/5000 [13:50<05:51,  4.31it/s]clean:  72%|#######2  | 3618/5000 [14:03<05:19,  4.33it/s]clean:  72%|#######2  | 3618/5000 [14:20<05:19,  4.33it/s]clean:  75%|#######5  | 3750/5000 [14:33<04:47,  4.35it/s]clean:  75%|#######5  | 3750/5000 [14:50<04:47,  4.35it/s]clean:  77%|#######7  | 3873/5000 [15:03<04:24,  4.26it/s]clean:  77%|#######7  | 3873/5000 [15:20<04:24,  4.26it/s]clean:  80%|########  | 4000/5000 [15:33<03:55,  4.25it/s]clean:  80%|########  | 4000/5000 [15:50<03:55,  4.25it/s]clean:  83%|########2 | 4129/5000 [16:03<03:24,  4.27it/s]clean:  83%|########2 | 4129/5000 [16:20<03:24,  4.27it/s]clean:  85%|########5 | 4257/5000 [16:33<02:54,  4.26it/s]clean:  85%|########5 | 4257/5000 [16:50<02:54,  4.26it/s]clean:  88%|########7 | 4386/5000 [17:04<02:23,  4.27it/s]clean:  88%|########7 | 4386/5000 [17:20<02:23,  4.27it/s]clean:  90%|######### | 4516/5000 [17:34<01:53,  4.28it/s]clean:  90%|######### | 4516/5000 [17:50<01:53,  4.28it/s]clean:  93%|#########2| 4645/5000 [18:04<01:23,  4.28it/s]clean:  93%|#########2| 4645/5000 [18:20<01:23,  4.28it/s]clean:  96%|#########5| 4777/5000 [18:34<00:51,  4.30it/s]clean:  96%|#########5| 4777/5000 [18:50<00:51,  4.30it/s]clean:  98%|#########8| 4903/5000 [19:04<00:22,  4.27it/s]clean:  98%|#########8| 4903/5000 [19:20<00:22,  4.27it/s]clean: 100%|##########| 5000/5000 [19:26<00:00,  4.29it/s]
+
+Умова деградації: gaussian_noise
+gaussian_noise:   0%|          | 0/5000 [00:00<?, ?it/s]gaussian_noise:   2%|2         | 122/5000 [00:30<20:02,  4.06it/s]gaussian_noise:   2%|2         | 122/5000 [00:43<20:02,  4.06it/s]gaussian_noise:   5%|4         | 248/5000 [01:00<19:10,  4.13it/s]gaussian_noise:   5%|4         | 248/5000 [01:13<19:10,  4.13it/s]gaussian_noise:   7%|7         | 373/5000 [01:30<18:36,  4.14it/s]gaussian_noise:   7%|7         | 373/5000 [01:43<18:36,  4.14it/s]gaussian_noise:  10%|9         | 497/5000 [02:00<18:10,  4.13it/s]gaussian_noise:  10%|9         | 497/5000 [02:13<18:10,  4.13it/s]gaussian_noise:  12%|#2        | 622/5000 [02:30<17:39,  4.13it/s]gaussian_noise:  12%|#2        | 622/5000 [02:43<17:39,  4.13it/s]gaussian_noise:  15%|#4        | 747/5000 [03:00<17:07,  4.14it/s]gaussian_noise:  15%|#4        | 747/5000 [03:13<17:07,  4.14it/s]gaussian_noise:  17%|#7        | 869/5000 [03:30<16:44,  4.11it/s]gaussian_noise:  17%|#7        | 869/5000 [03:43<16:44,  4.11it/s]gaussian_noise:  20%|#9        | 994/5000 [04:00<16:11,  4.12it/s]gaussian_noise:  20%|#9        | 994/5000 [04:13<16:11,  4.12it/s]gaussian_noise:  22%|##2       | 1118/5000 [04:31<15:41,  4.13it/s]gaussian_noise:  22%|##2       | 1118/5000 [04:43<15:41,  4.13it/s]gaussian_noise:  25%|##4       | 1242/5000 [05:01<15:11,  4.12it/s]gaussian_noise:  25%|##4       | 1242/5000 [05:13<15:11,  4.12it/s]gaussian_noise:  27%|##7       | 1365/5000 [05:31<14:43,  4.11it/s]gaussian_noise:  27%|##7       | 1365/5000 [05:43<14:43,  4.11it/s]gaussian_noise:  30%|##9       | 1489/5000 [06:01<14:13,  4.11it/s]gaussian_noise:  30%|##9       | 1489/5000 [06:13<14:13,  4.11it/s]gaussian_noise:  32%|###2      | 1613/5000 [06:31<13:43,  4.11it/s]gaussian_noise:  32%|###2      | 1613/5000 [06:43<13:43,  4.11it/s]gaussian_noise:  35%|###4      | 1744/5000 [07:01<12:58,  4.18it/s]gaussian_noise:  35%|###4      | 1744/5000 [07:13<12:58,  4.18it/s]gaussian_noise:  37%|###7      | 1872/5000 [07:31<12:24,  4.20it/s]gaussian_noise:  37%|###7      | 1872/5000 [07:43<12:24,  4.20it/s]gaussian_noise:  40%|###9      | 1995/5000 [08:02<12:02,  4.16it/s]gaussian_noise:  40%|###9      | 1995/5000 [08:13<12:02,  4.16it/s]gaussian_noise:  42%|####2     | 2120/5000 [08:32<11:32,  4.16it/s]gaussian_noise:  42%|####2     | 2120/5000 [08:43<11:32,  4.16it/s]gaussian_noise:  45%|####4     | 2243/5000 [09:02<11:06,  4.14it/s]gaussian_noise:  45%|####4     | 2243/5000 [09:13<11:06,  4.14it/s]gaussian_noise:  47%|####7     | 2368/5000 [09:32<10:36,  4.14it/s]gaussian_noise:  47%|####7     | 2368/5000 [09:43<10:36,  4.14it/s]gaussian_noise:  50%|####9     | 2493/5000 [10:02<10:05,  4.14it/s]gaussian_noise:  50%|####9     | 2493/5000 [10:13<10:05,  4.14it/s]gaussian_noise:  52%|#####2    | 2616/5000 [10:32<09:37,  4.12it/s]gaussian_noise:  52%|#####2    | 2616/5000 [10:43<09:37,  4.12it/s]gaussian_noise:  55%|#####4    | 2738/5000 [11:02<09:11,  4.10it/s]gaussian_noise:  55%|#####4    | 2738/5000 [11:13<09:11,  4.10it/s]gaussian_noise:  57%|#####7    | 2864/5000 [11:33<08:37,  4.12it/s]gaussian_noise:  57%|#####7    | 2864/5000 [11:43<08:37,  4.12it/s]gaussian_noise:  60%|#####9    | 2990/5000 [12:03<08:05,  4.14it/s]gaussian_noise:  60%|#####9    | 2990/5000 [12:13<08:05,  4.14it/s]gaussian_noise:  62%|######2   | 3111/5000 [12:33<07:40,  4.10it/s]gaussian_noise:  62%|######2   | 3111/5000 [12:43<07:40,  4.10it/s]gaussian_noise:  65%|######4   | 3237/5000 [13:03<07:07,  4.13it/s]gaussian_noise:  65%|######4   | 3237/5000 [13:23<07:07,  4.13it/s]gaussian_noise:  67%|######7   | 3361/5000 [13:33<06:37,  4.13it/s]gaussian_noise:  67%|######7   | 3361/5000 [13:53<06:37,  4.13it/s]gaussian_noise:  70%|######9   | 3483/5000 [14:03<06:09,  4.11it/s]gaussian_noise:  70%|######9   | 3483/5000 [14:23<06:09,  4.11it/s]gaussian_noise:  72%|#######2  | 3607/5000 [14:33<05:38,  4.11it/s]gaussian_noise:  72%|#######2  | 3607/5000 [14:53<05:38,  4.11it/s]gaussian_noise:  75%|#######4  | 3736/5000 [15:03<05:03,  4.17it/s]gaussian_noise:  75%|#######4  | 3736/5000 [15:23<05:03,  4.17it/s]gaussian_noise:  77%|#######7  | 3861/5000 [15:33<04:33,  4.16it/s]gaussian_noise:  77%|#######7  | 3861/5000 [15:53<04:33,  4.16it/s]gaussian_noise:  80%|#######9  | 3984/5000 [16:03<04:05,  4.14it/s]gaussian_noise:  80%|#######9  | 3984/5000 [16:23<04:05,  4.14it/s]gaussian_noise:  82%|########2 | 4113/5000 [16:33<03:31,  4.18it/s]gaussian_noise:  82%|########2 | 4113/5000 [16:53<03:31,  4.18it/s]gaussian_noise:  85%|########4 | 4241/5000 [17:04<03:00,  4.20it/s]gaussian_noise:  85%|########4 | 4241/5000 [17:23<03:00,  4.20it/s]gaussian_noise:  87%|########7 | 4365/5000 [17:34<02:32,  4.17it/s]gaussian_noise:  87%|########7 | 4365/5000 [17:53<02:32,  4.17it/s]gaussian_noise:  90%|########9 | 4489/5000 [18:04<02:03,  4.15it/s]gaussian_noise:  90%|########9 | 4489/5000 [18:23<02:03,  4.15it/s]gaussian_noise:  92%|#########2| 4614/5000 [18:34<01:32,  4.15it/s]gaussian_noise:  92%|#########2| 4614/5000 [18:53<01:32,  4.15it/s]gaussian_noise:  95%|#########4| 4741/5000 [19:04<01:02,  4.17it/s]gaussian_noise:  95%|#########4| 4741/5000 [19:23<01:02,  4.17it/s]gaussian_noise:  97%|#########7| 4865/5000 [19:34<00:32,  4.16it/s]gaussian_noise:  97%|#########7| 4865/5000 [19:53<00:32,  4.16it/s]gaussian_noise: 100%|#########9| 4992/5000 [20:05<00:01,  4.17it/s]gaussian_noise: 100%|##########| 5000/5000 [20:06<00:00,  4.14it/s]
+
+Умова деградації: blur
+blur:   0%|          | 0/5000 [00:00<?, ?it/s]blur:   3%|2         | 134/5000 [00:30<18:13,  4.45it/s]blur:   3%|2         | 134/5000 [00:46<18:13,  4.45it/s]blur:   5%|5         | 266/5000 [01:00<17:51,  4.42it/s]blur:   5%|5         | 266/5000 [01:16<17:51,  4.42it/s]blur:   8%|8         | 401/5000 [01:30<17:16,  4.44it/s]blur:   8%|8         | 401/5000 [01:46<17:16,  4.44it/s]blur:  11%|#         | 538/5000 [02:00<16:34,  4.49it/s]blur:  11%|#         | 538/5000 [02:16<16:34,  4.49it/s]blur:  14%|#3        | 675/5000 [02:30<15:57,  4.51it/s]blur:  14%|#3        | 675/5000 [02:46<15:57,  4.51it/s]blur:  16%|#6        | 809/5000 [03:00<15:32,  4.49it/s]blur:  16%|#6        | 809/5000 [03:16<15:32,  4.49it/s]blur:  19%|#8        | 938/5000 [03:30<15:17,  4.43it/s]blur:  19%|#8        | 938/5000 [03:46<15:17,  4.43it/s]blur:  21%|##1       | 1073/5000 [04:00<14:43,  4.45it/s]blur:  21%|##1       | 1073/5000 [04:16<14:43,  4.45it/s]blur:  24%|##4       | 1206/5000 [04:30<14:15,  4.43it/s]blur:  24%|##4       | 1206/5000 [04:46<14:15,  4.43it/s]blur:  27%|##6       | 1342/5000 [05:01<13:40,  4.46it/s]blur:  27%|##6       | 1342/5000 [05:16<13:40,  4.46it/s]blur:  30%|##9       | 1478/5000 [05:31<13:07,  4.47it/s]blur:  30%|##9       | 1478/5000 [05:46<13:07,  4.47it/s]blur:  32%|###2      | 1609/5000 [06:01<12:43,  4.44it/s]blur:  32%|###2      | 1609/5000 [06:16<12:43,  4.44it/s]blur:  35%|###4      | 1744/5000 [06:31<12:10,  4.45it/s]blur:  35%|###4      | 1744/5000 [06:46<12:10,  4.45it/s]blur:  38%|###7      | 1884/5000 [07:01<11:30,  4.51it/s]blur:  38%|###7      | 1884/5000 [07:16<11:30,  4.51it/s]blur:  40%|####      | 2014/5000 [07:31<11:10,  4.45it/s]blur:  40%|####      | 2014/5000 [07:46<11:10,  4.45it/s]blur:  43%|####2     | 2149/5000 [08:01<10:39,  4.46it/s]blur:  43%|####2     | 2149/5000 [08:16<10:39,  4.46it/s]blur:  46%|####5     | 2282/5000 [08:32<10:12,  4.44it/s]blur:  46%|####5     | 2282/5000 [08:46<10:12,  4.44it/s]blur:  48%|####8     | 2417/5000 [09:02<09:40,  4.45it/s]blur:  48%|####8     | 2417/5000 [09:16<09:40,  4.45it/s]blur:  51%|#####     | 2545/5000 [09:32<09:18,  4.39it/s]blur:  51%|#####     | 2545/5000 [09:46<09:18,  4.39it/s]blur:  54%|#####3    | 2675/5000 [10:02<08:52,  4.37it/s]blur:  54%|#####3    | 2675/5000 [10:16<08:52,  4.37it/s]blur:  56%|#####6    | 2812/5000 [10:32<08:14,  4.42it/s]blur:  56%|#####6    | 2812/5000 [10:46<08:14,  4.42it/s]blur:  59%|#####8    | 2944/5000 [11:02<07:46,  4.41it/s]blur:  59%|#####8    | 2944/5000 [11:16<07:46,  4.41it/s]blur:  61%|######1   | 3073/5000 [11:32<07:20,  4.38it/s]blur:  61%|######1   | 3073/5000 [11:46<07:20,  4.38it/s]blur:  64%|######4   | 3204/5000 [12:02<06:50,  4.37it/s]blur:  64%|######4   | 3204/5000 [12:16<06:50,  4.37it/s]blur:  67%|######6   | 3337/5000 [12:32<06:18,  4.39it/s]blur:  67%|######6   | 3337/5000 [12:46<06:18,  4.39it/s]blur:  69%|######9   | 3468/5000 [13:02<05:50,  4.37it/s]blur:  69%|######9   | 3468/5000 [13:16<05:50,  4.37it/s]blur:  72%|#######1  | 3597/5000 [13:32<05:22,  4.35it/s]blur:  72%|#######1  | 3597/5000 [13:46<05:22,  4.35it/s]blur:  75%|#######4  | 3733/5000 [14:03<04:47,  4.41it/s]blur:  75%|#######4  | 3733/5000 [14:16<04:47,  4.41it/s]blur:  77%|#######7  | 3865/5000 [14:33<04:18,  4.40it/s]blur:  77%|#######7  | 3865/5000 [14:46<04:18,  4.40it/s]blur:  80%|#######9  | 3999/5000 [15:03<03:46,  4.41it/s]blur:  80%|#######9  | 3999/5000 [15:16<03:46,  4.41it/s]blur:  83%|########2 | 4136/5000 [15:33<03:13,  4.46it/s]blur:  83%|########2 | 4136/5000 [15:46<03:13,  4.46it/s]blur:  85%|########5 | 4271/5000 [16:03<02:43,  4.47it/s]blur:  85%|########5 | 4271/5000 [16:16<02:43,  4.47it/s]blur:  88%|########8 | 4401/5000 [16:33<02:15,  4.42it/s]blur:  88%|########8 | 4401/5000 [16:46<02:15,  4.42it/s]blur:  91%|######### | 4530/5000 [17:03<01:47,  4.38it/s]blur:  91%|######### | 4530/5000 [17:16<01:47,  4.38it/s]blur:  93%|#########3| 4663/5000 [17:33<01:16,  4.39it/s]blur:  93%|#########3| 4663/5000 [17:46<01:16,  4.39it/s]blur:  96%|#########5| 4796/5000 [18:03<00:46,  4.40it/s]blur:  96%|#########5| 4796/5000 [18:16<00:46,  4.40it/s]blur:  98%|#########8| 4925/5000 [18:33<00:17,  4.37it/s]blur:  98%|#########8| 4925/5000 [18:46<00:17,  4.37it/s]blur: 100%|##########| 5000/5000 [18:50<00:00,  4.42it/s]
+
+Умова деградації: low_light
+low_light:   0%|          | 0/5000 [00:00<?, ?it/s]low_light:   3%|2         | 135/5000 [00:30<18:02,  4.49it/s]low_light:   3%|2         | 135/5000 [00:46<18:02,  4.49it/s]low_light:   6%|5         | 276/5000 [01:00<17:06,  4.60it/s]low_light:   6%|5         | 276/5000 [01:16<17:06,  4.60it/s]low_light:   8%|8         | 409/5000 [01:30<16:54,  4.53it/s]low_light:   8%|8         | 409/5000 [01:46<16:54,  4.53it/s]low_light:  11%|#         | 546/5000 [02:00<16:21,  4.54it/s]low_light:  11%|#         | 546/5000 [02:16<16:21,  4.54it/s]low_light:  14%|#3        | 681/5000 [02:30<15:55,  4.52it/s]low_light:  14%|#3        | 681/5000 [02:46<15:55,  4.52it/s]low_light:  16%|#6        | 812/5000 [03:00<15:38,  4.46it/s]low_light:  16%|#6        | 812/5000 [03:16<15:38,  4.46it/s]low_light:  19%|#8        | 944/5000 [03:30<15:14,  4.44it/s]low_light:  19%|#8        | 944/5000 [03:46<15:14,  4.44it/s]low_light:  22%|##1       | 1081/5000 [04:00<14:36,  4.47it/s]low_light:  22%|##1       | 1081/5000 [04:16<14:36,  4.47it/s]low_light:  24%|##4       | 1218/5000 [04:30<14:01,  4.49it/s]low_light:  24%|##4       | 1218/5000 [04:46<14:01,  4.49it/s]low_light:  27%|##7       | 1352/5000 [05:00<13:34,  4.48it/s]low_light:  27%|##7       | 1352/5000 [05:16<13:34,  4.48it/s]low_light:  30%|##9       | 1486/5000 [05:30<13:05,  4.48it/s]low_light:  30%|##9       | 1486/5000 [05:46<13:05,  4.48it/s]low_light:  32%|###2      | 1619/5000 [06:01<12:38,  4.46it/s]low_light:  32%|###2      | 1619/5000 [06:16<12:38,  4.46it/s]low_light:  35%|###5      | 1758/5000 [06:31<11:59,  4.50it/s]low_light:  35%|###5      | 1758/5000 [06:46<11:59,  4.50it/s]low_light:  38%|###7      | 1895/5000 [07:01<11:27,  4.52it/s]low_light:  38%|###7      | 1895/5000 [07:16<11:27,  4.52it/s]low_light:  40%|####      | 2024/5000 [07:31<11:09,  4.45it/s]low_light:  40%|####      | 2024/5000 [07:46<11:09,  4.45it/s]low_light:  43%|####3     | 2156/5000 [08:01<10:41,  4.43it/s]low_light:  43%|####3     | 2156/5000 [08:16<10:41,  4.43it/s]low_light:  46%|####5     | 2291/5000 [08:31<10:09,  4.44it/s]low_light:  46%|####5     | 2291/5000 [08:46<10:09,  4.44it/s]low_light:  48%|####8     | 2422/5000 [09:01<09:44,  4.41it/s]low_light:  48%|####8     | 2422/5000 [09:16<09:44,  4.41it/s]low_light:  51%|#####1    | 2552/5000 [09:31<09:18,  4.39it/s]low_light:  51%|#####1    | 2552/5000 [09:46<09:18,  4.39it/s]low_light:  54%|#####3    | 2681/5000 [10:02<08:52,  4.35it/s]low_light:  54%|#####3    | 2681/5000 [10:16<08:52,  4.35it/s]low_light:  56%|#####6    | 2817/5000 [10:32<08:16,  4.39it/s]low_light:  56%|#####6    | 2817/5000 [10:46<08:16,  4.39it/s]low_light:  59%|#####9    | 2951/5000 [11:02<07:44,  4.41it/s]low_light:  59%|#####9    | 2951/5000 [11:16<07:44,  4.41it/s]low_light:  62%|######1   | 3079/5000 [11:32<07:20,  4.36it/s]low_light:  62%|######1   | 3079/5000 [11:46<07:20,  4.36it/s]low_light:  64%|######4   | 3211/5000 [12:02<06:50,  4.36it/s]low_light:  64%|######4   | 3211/5000 [12:16<06:50,  4.36it/s]low_light:  67%|######6   | 3346/5000 [12:33<06:16,  4.39it/s]low_light:  67%|######6   | 3346/5000 [12:46<06:16,  4.39it/s]low_light:  70%|######9   | 3480/5000 [13:03<05:44,  4.41it/s]low_light:  70%|######9   | 3480/5000 [13:16<05:44,  4.41it/s]low_light:  72%|#######2  | 3611/5000 [13:33<05:15,  4.40it/s]low_light:  72%|#######2  | 3611/5000 [13:46<05:15,  4.40it/s]low_light:  75%|#######4  | 3747/5000 [14:03<04:42,  4.44it/s]low_light:  75%|#######4  | 3747/5000 [14:16<04:42,  4.44it/s]low_light:  78%|#######7  | 3884/5000 [14:33<04:09,  4.47it/s]low_light:  78%|#######7  | 3884/5000 [14:46<04:09,  4.47it/s]low_light:  80%|########  | 4018/5000 [15:03<03:40,  4.46it/s]low_light:  80%|########  | 4018/5000 [15:16<03:40,  4.46it/s]low_light:  83%|########3 | 4153/5000 [15:33<03:09,  4.46it/s]low_light:  83%|########3 | 4153/5000 [15:46<03:09,  4.46it/s]low_light:  86%|########5 | 4289/5000 [16:04<02:38,  4.48it/s]low_light:  86%|########5 | 4289/5000 [16:16<02:38,  4.48it/s]low_light:  88%|########8 | 4421/5000 [16:34<02:10,  4.45it/s]low_light:  88%|########8 | 4421/5000 [16:46<02:10,  4.45it/s]low_light:  91%|#########1| 4555/5000 [17:04<01:39,  4.45it/s]low_light:  91%|#########1| 4555/5000 [17:16<01:39,  4.45it/s]low_light:  94%|#########3| 4689/5000 [17:34<01:09,  4.46it/s]low_light:  94%|#########3| 4689/5000 [17:46<01:09,  4.46it/s]low_light:  96%|#########6| 4819/5000 [18:04<00:40,  4.42it/s]low_light:  96%|#########6| 4819/5000 [18:16<00:40,  4.42it/s]low_light:  99%|#########9| 4955/5000 [18:34<00:10,  4.45it/s]low_light: 100%|##########| 5000/5000 [18:43<00:00,  4.45it/s]
+
+Умова деградації: haze
+haze:   0%|          | 0/5000 [00:00<?, ?it/s]haze:   2%|2         | 123/5000 [00:30<19:54,  4.08it/s]haze:   2%|2         | 123/5000 [00:42<19:54,  4.08it/s]haze:   5%|4         | 247/5000 [01:00<19:15,  4.11it/s]haze:   5%|4         | 247/5000 [01:12<19:15,  4.11it/s]haze:   7%|7         | 372/5000 [01:30<18:41,  4.13it/s]haze:   7%|7         | 372/5000 [01:42<18:41,  4.13it/s]haze:  10%|9         | 495/5000 [02:00<18:16,  4.11it/s]haze:  10%|9         | 495/5000 [02:12<18:16,  4.11it/s]haze:  12%|#2        | 620/5000 [02:30<17:42,  4.12it/s]haze:  12%|#2        | 620/5000 [02:42<17:42,  4.12it/s]haze:  15%|#4        | 745/5000 [03:00<17:11,  4.13it/s]haze:  15%|#4        | 745/5000 [03:12<17:11,  4.13it/s]haze:  17%|#7        | 869/5000 [03:31<16:42,  4.12it/s]haze:  17%|#7        | 869/5000 [03:42<16:42,  4.12it/s]haze:  20%|#9        | 991/5000 [04:01<16:17,  4.10it/s]haze:  20%|#9        | 991/5000 [04:12<16:17,  4.10it/s]haze:  22%|##2       | 1116/5000 [04:31<15:43,  4.12it/s]haze:  22%|##2       | 1116/5000 [04:42<15:43,  4.12it/s]haze:  25%|##4       | 1240/5000 [05:01<15:14,  4.11it/s]haze:  25%|##4       | 1240/5000 [05:12<15:14,  4.11it/s]haze:  27%|##7       | 1362/5000 [05:31<14:49,  4.09it/s]haze:  27%|##7       | 1362/5000 [05:42<14:49,  4.09it/s]haze:  30%|##9       | 1486/5000 [06:01<14:17,  4.10it/s]haze:  30%|##9       | 1486/5000 [06:12<14:17,  4.10it/s]haze:  32%|###2      | 1608/5000 [06:31<13:50,  4.09it/s]haze:  32%|###2      | 1608/5000 [06:42<13:50,  4.09it/s]haze:  35%|###4      | 1735/5000 [07:01<13:10,  4.13it/s]haze:  35%|###4      | 1735/5000 [07:12<13:10,  4.13it/s]haze:  37%|###7      | 1861/5000 [07:31<12:37,  4.15it/s]haze:  37%|###7      | 1861/5000 [07:42<12:37,  4.15it/s]haze:  40%|###9      | 1982/5000 [08:02<12:15,  4.10it/s]haze:  40%|###9      | 1982/5000 [08:12<12:15,  4.10it/s]haze:  42%|####2     | 2103/5000 [08:32<11:50,  4.08it/s]haze:  42%|####2     | 2103/5000 [08:52<11:50,  4.08it/s]haze:  45%|####4     | 2228/5000 [09:02<11:15,  4.10it/s]haze:  45%|####4     | 2228/5000 [09:22<11:15,  4.10it/s]haze:  47%|####6     | 2350/5000 [09:32<10:48,  4.08it/s]haze:  47%|####6     | 2350/5000 [09:52<10:48,  4.08it/s]haze:  49%|####9     | 2473/5000 [10:02<10:17,  4.09it/s]haze:  49%|####9     | 2473/5000 [10:22<10:17,  4.09it/s]haze:  52%|#####1    | 2595/5000 [10:32<09:50,  4.08it/s]haze:  52%|#####1    | 2595/5000 [10:52<09:50,  4.08it/s]haze:  54%|#####4    | 2718/5000 [11:02<09:20,  4.07it/s]haze:  54%|#####4    | 2718/5000 [11:22<09:20,  4.07it/s]haze:  57%|#####6    | 2843/5000 [11:33<08:46,  4.10it/s]haze:  57%|#####6    | 2843/5000 [11:52<08:46,  4.10it/s]haze:  59%|#####9    | 2968/5000 [12:03<08:14,  4.11it/s]haze:  59%|#####9    | 2968/5000 [12:22<08:14,  4.11it/s]haze:  62%|######1   | 3090/5000 [12:33<07:46,  4.09it/s]haze:  62%|######1   | 3090/5000 [12:52<07:46,  4.09it/s]haze:  64%|######4   | 3215/5000 [13:03<07:13,  4.11it/s]haze:  64%|######4   | 3215/5000 [13:22<07:13,  4.11it/s]haze:  67%|######6   | 3338/5000 [13:33<06:44,  4.10it/s]haze:  67%|######6   | 3338/5000 [13:52<06:44,  4.10it/s]haze:  69%|######9   | 3461/5000 [14:03<06:15,  4.10it/s]haze:  69%|######9   | 3461/5000 [14:22<06:15,  4.10it/s]haze:  72%|#######1  | 3584/5000 [14:33<05:45,  4.09it/s]haze:  72%|#######1  | 3584/5000 [14:52<05:45,  4.09it/s]haze:  74%|#######4  | 3708/5000 [15:03<05:14,  4.11it/s]haze:  74%|#######4  | 3708/5000 [15:22<05:14,  4.11it/s]haze:  77%|#######6  | 3829/5000 [15:33<04:47,  4.08it/s]haze:  77%|#######6  | 3829/5000 [15:52<04:47,  4.08it/s]haze:  79%|#######9  | 3953/5000 [16:04<04:16,  4.08it/s]haze:  79%|#######9  | 3953/5000 [16:22<04:16,  4.08it/s]haze:  82%|########1 | 4077/5000 [16:34<03:45,  4.09it/s]haze:  82%|########1 | 4077/5000 [16:52<03:45,  4.09it/s]haze:  84%|########4 | 4205/5000 [17:04<03:12,  4.14it/s]haze:  84%|########4 | 4205/5000 [17:22<03:12,  4.14it/s]haze:  87%|########6 | 4329/5000 [17:34<02:42,  4.14it/s]haze:  87%|########6 | 4329/5000 [17:52<02:42,  4.14it/s]haze:  89%|########8 | 4446/5000 [18:04<02:16,  4.06it/s]haze:  89%|########8 | 4446/5000 [18:22<02:16,  4.06it/s]haze:  91%|#########1| 4568/5000 [18:34<01:46,  4.06it/s]haze:  91%|#########1| 4568/5000 [18:52<01:46,  4.06it/s]haze:  94%|#########3| 4691/5000 [19:04<01:15,  4.07it/s]haze:  94%|#########3| 4691/5000 [19:22<01:15,  4.07it/s]haze:  96%|#########6| 4815/5000 [19:34<00:45,  4.09it/s]haze:  96%|#########6| 4815/5000 [19:52<00:45,  4.09it/s]haze:  99%|#########8| 4940/5000 [20:04<00:14,  4.11it/s]haze: 100%|##########| 5000/5000 [20:19<00:00,  4.10it/s]
+
+Умова деградації: multifactor
+multifactor:   0%|          | 0/5000 [00:00<?, ?it/s]multifactor:   2%|2         | 124/5000 [00:30<19:46,  4.11it/s]multifactor:   2%|2         | 124/5000 [00:43<19:46,  4.11it/s]multifactor:   5%|4         | 246/5000 [01:00<19:29,  4.06it/s]multifactor:   5%|4         | 246/5000 [01:13<19:29,  4.06it/s]multifactor:   7%|7         | 370/5000 [01:30<18:54,  4.08it/s]multifactor:   7%|7         | 370/5000 [01:43<18:54,  4.08it/s]multifactor:  10%|9         | 493/5000 [02:00<18:24,  4.08it/s]multifactor:  10%|9         | 493/5000 [02:13<18:24,  4.08it/s]multifactor:  12%|#2        | 615/5000 [02:30<17:56,  4.07it/s]multifactor:  12%|#2        | 615/5000 [02:43<17:56,  4.07it/s]multifactor:  15%|#4        | 736/5000 [03:00<17:30,  4.06it/s]multifactor:  15%|#4        | 736/5000 [03:13<17:30,  4.06it/s]multifactor:  17%|#7        | 857/5000 [03:30<17:03,  4.05it/s]multifactor:  17%|#7        | 857/5000 [03:43<17:03,  4.05it/s]multifactor:  20%|#9        | 980/5000 [04:00<16:29,  4.06it/s]multifactor:  20%|#9        | 980/5000 [04:13<16:29,  4.06it/s]multifactor:  22%|##2       | 1104/5000 [04:31<15:55,  4.08it/s]multifactor:  22%|##2       | 1104/5000 [04:43<15:55,  4.08it/s]multifactor:  25%|##4       | 1226/5000 [05:01<15:26,  4.07it/s]multifactor:  25%|##4       | 1226/5000 [05:13<15:26,  4.07it/s]multifactor:  27%|##6       | 1346/5000 [05:31<15:03,  4.05it/s]multifactor:  27%|##6       | 1346/5000 [05:43<15:03,  4.05it/s]multifactor:  29%|##9       | 1468/5000 [06:01<14:32,  4.05it/s]multifactor:  29%|##9       | 1468/5000 [06:13<14:32,  4.05it/s]multifactor:  32%|###1      | 1585/5000 [06:31<14:13,  4.00it/s]multifactor:  32%|###1      | 1585/5000 [06:43<14:13,  4.00it/s]multifactor:  34%|###4      | 1708/5000 [07:01<13:37,  4.03it/s]multifactor:  34%|###4      | 1708/5000 [07:13<13:37,  4.03it/s]multifactor:  37%|###6      | 1832/5000 [07:31<13:01,  4.05it/s]multifactor:  37%|###6      | 1832/5000 [07:43<13:01,  4.05it/s]multifactor:  39%|###9      | 1952/5000 [08:01<12:36,  4.03it/s]multifactor:  39%|###9      | 1952/5000 [08:13<12:36,  4.03it/s]multifactor:  41%|####1     | 2072/5000 [08:32<12:09,  4.02it/s]multifactor:  41%|####1     | 2072/5000 [08:43<12:09,  4.02it/s]multifactor:  44%|####3     | 2197/5000 [09:02<11:32,  4.05it/s]multifactor:  44%|####3     | 2197/5000 [09:13<11:32,  4.05it/s]multifactor:  46%|####6     | 2318/5000 [09:32<11:03,  4.04it/s]multifactor:  46%|####6     | 2318/5000 [09:43<11:03,  4.04it/s]multifactor:  49%|####8     | 2441/5000 [10:02<10:31,  4.06it/s]multifactor:  49%|####8     | 2441/5000 [10:13<10:31,  4.06it/s]multifactor:  51%|#####1    | 2560/5000 [10:32<10:06,  4.02it/s]multifactor:  51%|#####1    | 2560/5000 [10:43<10:06,  4.02it/s]multifactor:  54%|#####3    | 2679/5000 [11:02<09:40,  4.00it/s]multifactor:  54%|#####3    | 2679/5000 [11:13<09:40,  4.00it/s]multifactor:  56%|#####6    | 2803/5000 [11:33<09:04,  4.03it/s]multifactor:  56%|#####6    | 2803/5000 [11:43<09:04,  4.03it/s]multifactor:  58%|#####8    | 2925/5000 [12:03<08:33,  4.04it/s]multifactor:  58%|#####8    | 2925/5000 [12:13<08:33,  4.04it/s]multifactor:  61%|######    | 3044/5000 [12:33<08:07,  4.01it/s]multifactor:  61%|######    | 3044/5000 [12:53<08:07,  4.01it/s]multifactor:  63%|######3   | 3165/5000 [13:03<07:36,  4.02it/s]multifactor:  63%|######3   | 3165/5000 [13:23<07:36,  4.02it/s]multifactor:  66%|######5   | 3286/5000 [13:33<07:06,  4.02it/s]multifactor:  66%|######5   | 3286/5000 [13:53<07:06,  4.02it/s]multifactor:  68%|######8   | 3407/5000 [14:03<06:36,  4.02it/s]multifactor:  68%|######8   | 3407/5000 [14:23<06:36,  4.02it/s]multifactor:  71%|#######   | 3526/5000 [14:33<06:09,  3.99it/s]multifactor:  71%|#######   | 3526/5000 [14:53<06:09,  3.99it/s]multifactor:  73%|#######2  | 3646/5000 [15:03<05:39,  3.99it/s]multifactor:  73%|#######2  | 3646/5000 [15:23<05:39,  3.99it/s]multifactor:  75%|#######5  | 3768/5000 [15:34<05:07,  4.00it/s]multifactor:  75%|#######5  | 3768/5000 [15:53<05:07,  4.00it/s]multifactor:  78%|#######7  | 3891/5000 [16:04<04:35,  4.02it/s]multifactor:  78%|#######7  | 3891/5000 [16:23<04:35,  4.02it/s]multifactor:  80%|########  | 4013/5000 [16:34<04:05,  4.03it/s]multifactor:  80%|########  | 4013/5000 [16:53<04:05,  4.03it/s]multifactor:  83%|########2 | 4137/5000 [17:04<03:33,  4.05it/s]multifactor:  83%|########2 | 4137/5000 [17:23<03:33,  4.05it/s]multifactor:  85%|########5 | 4259/5000 [17:34<03:02,  4.05it/s]multifactor:  85%|########5 | 4259/5000 [17:53<03:02,  4.05it/s]multifactor:  88%|########7 | 4379/5000 [18:04<02:33,  4.03it/s]multifactor:  88%|########7 | 4379/5000 [18:23<02:33,  4.03it/s]multifactor:  90%|########9 | 4499/5000 [18:35<02:04,  4.01it/s]multifactor:  90%|########9 | 4499/5000 [18:53<02:04,  4.01it/s]multifactor:  92%|#########2| 4620/5000 [19:05<01:34,  4.02it/s]multifactor:  92%|#########2| 4620/5000 [19:23<01:34,  4.02it/s]multifactor:  95%|#########4| 4736/5000 [19:35<01:06,  3.97it/s]multifactor:  95%|#########4| 4736/5000 [19:53<01:06,  3.97it/s]multifactor:  97%|#########6| 4849/5000 [20:05<00:38,  3.91it/s]multifactor:  97%|#########6| 4849/5000 [20:23<00:38,  3.91it/s]multifactor:  99%|#########9| 4972/5000 [20:35<00:07,  3.96it/s]multifactor: 100%|##########| 5000/5000 [20:42<00:00,  4.03it/s]
+
+============================================================
+Результати (mAP@[0.5:0.95])
+============================================================
+Loading and preparing results...
+DONE (t=0.03s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.73s).
+Accumulating evaluation results...
+DONE (t=0.59s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.055
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.073
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.060
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.025
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.053
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.086
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.044
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.062
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.062
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.029
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.063
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.098
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=4.16s).
+Accumulating evaluation results...
+DONE (t=0.59s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.053
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.070
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.057
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.021
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.051
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.085
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.043
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.024
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.061
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.097
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.67s).
+Accumulating evaluation results...
+DONE (t=0.62s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.052
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.070
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.057
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.021
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.050
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.085
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.042
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.024
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.097
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.53s).
+Accumulating evaluation results...
+DONE (t=0.53s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.036
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.049
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.039
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.011
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.031
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.064
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.032
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.042
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.042
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.013
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.037
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.074
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.68s).
+Accumulating evaluation results...
+DONE (t=0.55s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.040
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.055
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.043
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.011
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.037
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.070
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.034
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.046
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.046
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.012
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.044
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.081
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.90s).
+Accumulating evaluation results...
+DONE (t=0.54s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.040
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.054
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.043
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.011
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.037
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.070
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.034
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.046
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.046
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.012
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.045
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.081
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.57s).
+Accumulating evaluation results...
+DONE (t=0.58s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.052
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.069
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.057
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.020
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.049
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.085
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.042
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.059
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.059
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.024
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.058
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.097
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.79s).
+Accumulating evaluation results...
+DONE (t=0.58s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.049
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.067
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.054
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.014
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.046
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.084
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.041
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.056
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.057
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.018
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.056
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.096
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.94s).
+Accumulating evaluation results...
+DONE (t=0.57s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.049
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.066
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.053
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.014
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.045
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.083
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.040
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.056
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.056
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.017
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.055
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.094
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.73s).
+Accumulating evaluation results...
+DONE (t=0.59s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.053
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.071
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.058
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.025
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.052
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.084
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.042
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.027
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.061
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.095
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.70s).
+Accumulating evaluation results...
+DONE (t=0.59s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.051
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.069
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.056
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.019
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.050
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.083
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.042
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.059
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.059
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.021
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.095
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.67s).
+Accumulating evaluation results...
+DONE (t=0.58s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.051
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.068
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.055
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.018
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.048
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.083
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.041
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.058
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.058
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.020
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.058
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.094
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=4.02s).
+Accumulating evaluation results...
+DONE (t=0.58s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.048
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.065
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.053
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.019
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.046
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.080
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.040
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.055
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.055
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.021
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.054
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.090
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.61s).
+Accumulating evaluation results...
+DONE (t=0.57s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.046
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.061
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.050
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.014
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.042
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.077
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.038
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.052
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.052
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.015
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.050
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.088
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.95s).
+Accumulating evaluation results...
+DONE (t=0.56s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.045
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.061
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.049
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.013
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.041
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.076
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.038
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.052
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.052
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.015
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.050
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.088
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.45s).
+Accumulating evaluation results...
+DONE (t=0.51s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.029
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.040
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.032
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.009
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.024
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.053
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.027
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.034
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.034
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.010
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.028
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.064
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.49s).
+Accumulating evaluation results...
+DONE (t=0.52s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.034
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.046
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.037
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.011
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.029
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.060
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.030
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.039
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.039
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.012
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.034
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.069
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.50s).
+Accumulating evaluation results...
+DONE (t=0.52s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.035
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.048
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.038
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.009
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.031
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.061
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.031
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.041
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.041
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.011
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.037
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.072
+
+{'='*60}
+Умова                Baseline    AD only     AD+LoG  Δ(AD vs BL)  Δ(LoG vs AD)
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+clean                  0.0546     0.0527     0.0523      -0.0019       -0.0004
+gaussian_noise         0.0360     0.0403     0.0403      +0.0043       -0.0000
+blur                   0.0520     0.0494     0.0487      -0.0026       -0.0007
+low_light              0.0528     0.0513     0.0508      -0.0015       -0.0005
+haze                   0.0483     0.0455     0.0451      -0.0028       -0.0005
+multifactor            0.0292     0.0339     0.0351      +0.0047       +0.0012
+
+{'='*60}
+Кореляційна діагностика ρ(LoG, G)
+––––––––––––––––––––––––––––––––––––––––
+Умова               mean ρ(LoG,G)      std
+––––––––––––––––––––––––––––––––––––––––
+clean                      0.3053   0.0463
+gaussian_noise             0.2598   0.0464
+blur                       0.2940   0.0439
+low_light                  0.2984   0.0452
+haze                       0.3158   0.0405
+multifactor                0.3068   0.0403
+
+Результати збережено у: <PROJECT_ROOT>/results/full_5000.AfmLxA/results.json
+Експеримент завершено.
+RUN_FINISHED elapsed_seconds=7169.4

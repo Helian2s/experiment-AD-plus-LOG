@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Preserve the log accompanying the archived experiment results.
+!/results/full_5000.AfmLxA/run.log
