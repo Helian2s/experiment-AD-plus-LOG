@@ -1,17 +1,23 @@
 # AD and LoG experiment index
 
-Each direct child folder owns its code and recorded results when available.
-The three named experiments use `run_experiment.py` and a README describing
-status and provenance. Dataset files, weights, and the virtual environment
-are shared rather than copied.
+Each direct child folder represents one code version and owns its source and
+README. Executions of that version live under `runs/`, each with its own
+configuration, outputs, and provenance. Changing image count or starting a
+pilot/full execution creates a new run, not a duplicate code-version folder.
+Dataset files, weights, and the virtual environment are shared rather than copied.
 
 ## Experiments
 
-| Folder | Images | Code and result status |
-| --- | ---: | --- |
-| [001_pilot_5](001_pilot_5/README.md) | 5 | Archived [result](001_pilot_5/results.json); reconstructed code, not an original execution snapshot. |
-| [002_full_5000](002_full_5000/README.md) | 5,000 | Archived [result](002_full_5000/results.json) and [log](002_full_5000/run.log); reconstructed code. |
-| [003_corrected_full](003_corrected_full/README.md) | 5,000 | Corrected protocol prepared; no completed full result yet. |
+| Code version | Runs | Code and result status |
+| --- | --- | --- |
+| [01](01/README.md) | [pilot_5](01/runs/pilot_5/README.md), [full_5000](01/runs/full_5000/README.md) | Shared reconstructed legacy code; archived 5-image and 5,000-image results, plus the full-run log. |
+| [02](02/README.md) | [Completed full run](02/runs/full_20261006T031903Z_33e4b749/RESULTS.md); local smoke runs | Corrected code; 5,000-image full result with original detailed metrics and execution-time source snapshot. |
+
+The former `001_pilot_5` and `002_full_5000` folders are now the two runs of
+`01`. Their reconstructed scripts differed only in image count and
+its docstring. The current code-version folders are named `01` and `02`.
+Saved run metadata and source snapshots retain their historical identifiers
+(`001_legacy` and `003_corrected_full`); new runs record the current names.
 
 The historical JSON and log files were moved without changing their bytes.
 The log's local project-root prefix was subsequently replaced with
@@ -19,15 +25,45 @@ The log's local project-root prefix was subsequently replaced with
 remain unchanged. The [trace](TRACE.md#public-repository-cleanup-on-2026-10-05)
 records this privacy edit and the current artifact fingerprints.
 The original launch commands and source snapshots were not preserved.
-The scripts beside the two historical results were reconstructed during the
+The scripts originally beside the two historical results were reconstructed during the
 2026-10-05 reorganization from the then-current source and recorded image
 counts. Their processing and evaluation algorithms retain the known defects;
-paths and overwrite protection were adapted to this layout. They do not prove
+paths and overwrite protection were adapted to this layout. Their consolidated
+shared script selects image count through `--images`. It does not prove
 the exact code or environment that produced the archived scores.
 
 The source used for reorganization, before those adaptations, had SHA-256
 `bed8d4ed0b715c2703b935a50bcdc0f700fda139974826ba35f3861527cec435`.
 This identifies the reconstruction basis, not either historical execution.
+
+## Common result format
+
+Each recorded research run has a derived `summary.json` and generated
+`RESULTS.md` inside its run directory. All three JSON summaries use
+`map_results` (per-condition, per-method
+`mAP_50_95` and `mAP_50`), `corr_summary` (per-condition `mean` and `std`),
+and `params` (the seven common AD/LoG, image-count, and seed parameters).
+Each run's original `results.json` remains byte-for-byte unchanged. The compact
+02 summary is derived from its completed run; detailed metrics, validity counts,
+full configuration, hashes, and provenance remain in that run's directory.
+The compact schema is not a complete reproduction manifest. Legacy runs have
+retrospective `run_config.json` files derived from archived parameters, not
+recovered execution manifests.
+
+The Markdown reports have identical headings and table columns. The brightness
+control appears only in experiment 02's JSON; older reports mark it `Not run`,
+not zero. Formatting neither invents missing experiments nor changes recorded
+values. A shared format does not remove the legacy protocol defects.
+
+To regenerate the derived summaries and reports without detector inference:
+
+```bash
+.venv/bin/python format_results.py --run-dir experiments/02/runs/full_20261006T031903Z_33e4b749
+```
+
+Add `--check` to verify that generated files match their sources without
+writing them. The formatter leaves the two historical JSON files and original
+02 run artifacts untouched.
 
 ## Shared inputs
 
@@ -44,11 +80,11 @@ The entire `shared/` directory is excluded from Git. It contains local inputs,
 not experiment code or results; those stay in the folders listed above.
 
 Scripts resolve shared data and model paths from their own locations, not the
-shell's working directory. The two archived scripts protect their existing
-`results.json`. Experiment 003 instead creates an exclusive directory, by
-default under its own `runs/`, with code snapshots, metadata, diagnostics, and results.
+shell's working directory. Both code versions create an exclusive directory
+under their own `runs/` for each new execution and refuse to reuse an existing
+directory. Experiment 02 records code snapshots, metadata, diagnostics, and results.
 The root [run_experiment.py](../run_experiment.py) launches
-`003_corrected_full`; it does not select a historical run automatically.
+`02`; it does not select a historical run automatically.
 
 ## Running and adding experiments
 
@@ -62,13 +98,15 @@ From the repository root, use the existing environment:
 
 These commands respectively validate inputs without inference, run a separate
 three-image technical smoke test, and run all 5,000 annotated val2017 images.
-Do not interpret smoke-test metrics as research results. Experiment 003
+Do not interpret smoke-test metrics as research results. Experiment 02
 compares four methods under six conditions with corrected evaluation and
-explicit detector settings; read its [protocol](003_corrected_full/README.md).
-The full run has not yet been performed. The two archived folders retain their
-legacy implementation and must not be overwritten.
+explicit detector settings; read its [protocol](02/README.md).
+A full corrected run has completed; running the last command again starts a
+new run rather than displaying its results. The two archived legacy runs
+must not be overwritten. For another execution of the reconstructed legacy
+version, see [its run options](01/README.md#additional-runs).
 
-Experiment 003 records raw detections locally for re-evaluation and later
+Experiment 02 records raw detections locally for re-evaluation and later
 paired bootstrap analysis. They and default smoke-run directories are ignored
 by Git; aggregate full-run artifacts remain eligible for publication.
 
@@ -77,8 +115,12 @@ It is excluded from Git. If a future experiment needs incompatible package
 versions, use a separate environment and record its dependencies; changing
 the shared environment does not reproduce the historical runs automatically.
 
-For a new experiment, copy the complete source folder to a new direct child
-of `experiments/`, excluding `runs/` and caches. Experiment 003 uses multiple
+For another run of the same code, use that version's run options; keep the
+outputs in a new subfolder of its `runs/`. Do not copy the version folder just
+to change the image count or to progress from pilot to full evaluation.
+
+For an algorithm/protocol change, copy the complete source folder to a new
+direct child of `experiments/`, excluding `runs/` and caches. Experiment 02 uses multiple
 Python modules, so copying only `run_experiment.py` is insufficient. Update the
 new README and configuration before running, recording the hypothesis,
 changes, image count, and comparisons. Keep code and results together; after
@@ -96,17 +138,17 @@ that saved cells exactly match the code executed in a live kernel.
 
 ## Result interpretation
 
-Both archived JSON files contain `map_results` (mAP at IoU 0.50:0.95 and 0.50),
-`corr_summary` (mean and standard deviation of LoG/gradient correlation), and
-`params`. Scores are fractions, not percentages.
+The compact summaries share the schema described above. Scores are fractions,
+not percentages. For experiment 02, use the original run artifacts when
+analyzing metrics beyond that common subset.
 
 The known `cls + 1` mapping does not match sparse COCO category IDs, and
 `low_light` with gamma 0.5 brightens images. These defects affect evaluation
 and the interpretation of `low_light` and `multifactor`. Archived scores are
 preliminary evidence, not validated quality measurements or confirmation of
-the research hypothesis. The archived scripts retain these behaviors;
-experiment 003 corrects them in a separate protocol. Changes in evaluation,
-degradation, and inference settings prevent treating the 002-to-003 score
+the research hypothesis. The shared legacy script retains these behaviors;
+experiment 02 corrects them in a separate protocol. Changes in evaluation,
+degradation, and inference settings prevent treating the legacy-to-corrected score
 difference as the benefit of AD or LoG.
 
 See the [trace](TRACE.md) for the recorded processing sequence, historical

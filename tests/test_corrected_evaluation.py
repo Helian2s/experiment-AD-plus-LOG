@@ -16,7 +16,7 @@ from pycocotools.coco import COCO
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location(
-    "corrected_evaluation", ROOT / "experiments/003_corrected_full/evaluation.py")
+    "corrected_evaluation", ROOT / "experiments/02/evaluation.py")
 evaluation = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(evaluation)
 CATEGORY_IDS = list(range(1, 12)) + list(range(13, 82))

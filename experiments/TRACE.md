@@ -5,34 +5,37 @@ log, current source, and inspected notebook cells. This is a retrospective
 record, not an original shell transcript. It covers the experiment artifacts
 present here and the subsequent work to archive them.
 
-Two runs are preserved: a 5-image preliminary result and a completed
-5,000-image run. The full run used the original class-mapping and gamma
-behavior, so the recorded scores are not a corrected COCO benchmark.
+The original archival record covered two runs: a 5-image preliminary result
+and a completed 5,000-image run. That full run used the original class-mapping
+and gamma behavior, so its scores are not a corrected COCO benchmark.
+The later corrected full run and common presentation format are recorded in
+the appended [completion section](#third-experiment-completion-on-2026-10-06-utc).
 
 ## Project reorganization on 2026-10-05
 
 After the original trace and results archive were created, the project was
 reorganized so each experiment owns its code and output in one folder:
 
-| Previous location | Location after that reorganization |
-| --- | --- |
-| `results/results.json` | [001_pilot_5/results.json](001_pilot_5/results.json) |
-| `results/full_5000.AfmLxA/results.json` | [002_full_5000/results.json](002_full_5000/results.json) |
-| `results/full_5000.AfmLxA/run.log` | [002_full_5000/run.log](002_full_5000/run.log) |
-| `experiment/run_experiment.py` | `003_current_500/run_experiment.py`, subsequently replaced by [003_corrected_full](003_corrected_full/README.md). |
-| `results/README.md` | [README.md](README.md) |
-| `results/TRACE.md` | This file. |
+| Previous location | Location after that reorganization | Current location |
+| --- | --- | --- |
+| `results/results.json` | `001_pilot_5/results.json` | [pilot result](01/runs/pilot_5/results.json) |
+| `results/full_5000.AfmLxA/results.json` | `002_full_5000/results.json` | [legacy full result](01/runs/full_5000/results.json) |
+| `results/full_5000.AfmLxA/run.log` | `002_full_5000/run.log` | [legacy full log](01/runs/full_5000/run.log) |
+| `experiment/run_experiment.py` | `003_current_500/run_experiment.py` | [003_corrected_full](02/README.md) |
+| `results/README.md` | `README.md` | [README.md](README.md) |
+| `results/TRACE.md` | This file. | This file. |
 
 The archived JSON and log files were moved byte-for-byte. The log's local
 project-root prefix was later redacted as described below. Historical relative
 paths inside the log and the archival narrative are retained; they describe
 the layout at that time, not current run instructions.
 
-The two historical folders now contain reconstructed scripts based on the
+The two historical folders initially received reconstructed scripts based on the
 source available at reorganization, with `N_IMAGES` set to the recorded 5 or
 5,000. No exact execution-time source was recovered. The scripts preserve
 the processing and evaluation algorithms while updating paths and preventing
-an existing `results.json` from being overwritten. They must not be treated
+an existing `results.json` from being overwritten. They were later consolidated
+under one code version as recorded below. They must not be treated
 as original source snapshots or evidence of exact historical reproduction.
 
 The then-current 500-image configuration received its own folder but had no saved result.
@@ -90,13 +93,13 @@ processing or evaluation algorithm was changed by this cleanup.
 
 ## Evidence
 
-- [Current experiment source](003_corrected_full/run_experiment.py): corrected
+- [Current experiment source](02/run_experiment.py): corrected
   experiment 003; not evidence of the code used for either archived run.
-- [Reconstructed historical source](002_full_5000/run_experiment.py): legacy
+- [Reconstructed historical source](01/run_experiment.py): legacy
   processing described below; not an original execution-time snapshot.
-- [Preliminary results](001_pilot_5/results.json): metrics and parameters for 5 images.
-- [Full results](002_full_5000/results.json): metrics and parameters for 5,000 images.
-- [Full run log](002_full_5000/run.log): start metadata, progress, evaluation
+- [Preliminary results](01/runs/pilot_5/results.json): metrics and parameters for 5 images.
+- [Full results](01/runs/full_5000/results.json): metrics and parameters for 5,000 images.
+- [Full run log](01/runs/full_5000/run.log): start metadata, progress, evaluation
   output, summary tables, and completion marker.
 - [Experiment index](README.md): updated from the archive description added
   with the results commit.
@@ -284,19 +287,19 @@ launch. Paths below use their post-reorganization locations; the move itself
 did not change file contents. The log checksum was updated after redaction.
 
 ```text
-8265a90458cca09c989245e2ec0610aa1f4e674e8e0bef37eb900cf0759fbe8e  experiments/001_pilot_5/results.json
-287c188061661b1d7702895b434fc18aa095496fb8ea5c8382a5c981c1802bb4  experiments/002_full_5000/results.json
-c687653de340cd97be7ed75c3cb050c91559bf2896ffb1297b7193af9666d384  experiments/002_full_5000/run.log
+8265a90458cca09c989245e2ec0610aa1f4e674e8e0bef37eb900cf0759fbe8e  experiments/01/runs/pilot_5/results.json
+287c188061661b1d7702895b434fc18aa095496fb8ea5c8382a5c981c1802bb4  experiments/01/runs/full_5000/results.json
+c687653de340cd97be7ed75c3cb050c91559bf2896ffb1297b7193af9666d384  experiments/01/runs/full_5000/run.log
 ```
 
 ## Third-experiment preparation on 2026-10-05
 
 At the user's request, the unused 500-image working configuration was replaced
-by [003_corrected_full](003_corrected_full/README.md), and the root launcher
+by [003_corrected_full](02/README.md), and the root launcher
 was redirected to it. The intended full run covers all 5,000 annotated COCO
-val2017 images. This records preparation, not a completed full experiment;
-no corrected full-run metrics are available yet. Technical preflight or
-smoke-test artifacts, when created, are not research-result evidence.
+val2017 images. This section records preparation, not completion; no corrected
+full-run metrics were available at that stage. Technical preflight or
+smoke-test artifacts are not research-result evidence.
 
 The new protocol addresses the ten reviewed issues in separate code: sparse
 COCO class mapping, darkening gamma, fail-fast evaluation, consistent empty
@@ -314,7 +317,7 @@ detections and default smoke directories are ignored by Git; full aggregate
 artifacts remain eligible for publication. The existing setup and license
 were not changed, and historical 001/002 code and artifacts were not edited.
 
-The [analysis plan](003_corrected_full/README.md#analysis-plan-and-limits)
+The [analysis plan](02/README.md#analysis-plan-and-limits)
 specifies within-run AP comparisons against AD and the brightness control,
 including clean-image regressions. Paired image bootstrap and repeated noise
 seeds remain follow-up analysis/experiments, not completed evidence. The new
@@ -351,3 +354,88 @@ seed pairing, and artifact persistence. Published-file privacy/link checks
 and `git diff --check` passed. Historical artifact fingerprints were retained.
 No full corrected run, bootstrap analysis, commit, or push was performed
 during this preparation.
+
+## Third-experiment completion on 2026-10-06 UTC
+
+The corrected full experiment subsequently ran from committed source
+`6cbae941b0668c9613f1236a369ae1c02919360f`, with a clean working tree recorded
+at launch. Its output is preserved under
+`003_corrected_full/runs/full_20261006T031903Z_33e4b749/`:
+
+- [Manifest](02/runs/full_20261006T031903Z_33e4b749/manifest.json):
+  all 5,000 annotated image IDs and input hashes, six conditions, four methods,
+  seed 42, explicit settings, and source/environment provenance.
+- [Completion status](02/runs/full_20261006T031903Z_33e4b749/status.json):
+  `complete`, with 120,000 detector calls and all 5,000 images processed in
+  the last condition.
+- [Detailed results](02/runs/full_20261006T031903Z_33e4b749/results.json):
+  all 24 condition/method evaluations, correlation summaries, paired metric
+  differences, artifact fingerprints, and timing.
+
+The recorded start was `2026-10-06T03:19:03.638929+00:00`; completion was
+`2026-10-06T04:42:50.937112+00:00`, with elapsed time
+`5027.298180657999` seconds. These facts come from the completed run's saved
+manifest, status, and results rather than from an inferred finish time.
+The launch-time source snapshot remains unchanged, including its README's
+then-current preparation status.
+
+## Common result formatting on 2026-10-06
+
+At the user's request, all three experiment folders were given results as
+`RESULTS.md` with the same headings and table columns and `results.json` with
+the same compact top-level schema: `map_results`, `corr_summary`, and `params`.
+The 001/002 JSON files remain byte-for-byte original. Experiment 003 received
+a derived compact JSON beside its code; its detailed run JSON and every
+other original run artifact were left unchanged.
+
+The shared [format_results.py](../format_results.py) generates the three
+Markdown reports and compact 003 summary without inference or recalculating
+metrics. Its `--check` mode verifies those derived files without writing them.
+The four-method table layout marks the brightness control as `Not run` for
+001/002; no control results were invented or added to their JSON files.
+The common seven-parameter subset is not a replacement for 003's full
+manifest, evaluation settings, or correlation-validity counts.
+
+This formatting step does not make the legacy and corrected protocols
+equivalent, estimate confidence intervals, or demonstrate the hypothesis.
+Bootstrap analysis and additional noise-seed experiments remain outstanding.
+
+## Code-version and run consolidation on 2026-10-06
+
+The user clarified that an experiment folder represents a code version, while
+pilot and full executions of the same version belong in its `runs/`. The two
+legacy reconstructed scripts were compared: only the image-count assignment
+and its docstring differed. They were consolidated into
+[001_legacy/run_experiment.py](01/run_experiment.py).
+
+- `001_pilot_5/` became [001_legacy/runs/pilot_5/](01/runs/pilot_5/README.md).
+- `002_full_5000/` became [001_legacy/runs/full_5000/](01/runs/full_5000/README.md).
+- The shared legacy script now selects image count using `--images` and creates
+  a new exclusive run directory. Its scientific algorithms retain all legacy
+  limitations; no inference or metric recalculation was performed.
+- Archived runs received retrospective `run_config.json` records copied from
+  their stored result parameters. These are not recovered launch manifests.
+- All three research runs now keep derived `summary.json` and `RESULTS.md`
+  inside their own run directories. Original `results.json` files and the
+  sanitized legacy log retain the fingerprints recorded above.
+- The corrected version keeps the `003_corrected_full` identifier because its
+  completed manifest and source snapshot already record it. Original corrected
+  run artifacts, including its source snapshot and metadata, were not edited.
+
+New execution settings create a new run within the existing version;
+algorithm/protocol changes create a new version folder. Consolidating matching
+legacy reconstructions does not recover the missing historical execution code.
+
+## Code-version folder renaming on 2026-10-06
+
+At the user's request, `001_legacy/` was renamed to [01/](01/README.md), and
+`003_corrected_full/` to [02/](02/README.md). Their run subfolders moved with
+them. The launcher, current instructions, tests, and generated report labels
+now use these two-digit names. Historical path mentions above describe the
+earlier layout; links and artifact-fingerprint paths point to the current one.
+
+Original run results, logs, manifests, saved configuration records, and source
+snapshots were not edited. They retain the earlier experiment identifiers as
+provenance. The formatter accepts `003_corrected_full` in archived manifests
+under `02/runs/`, while new runs record the current folder name. No inference
+or metric recalculation was performed for this rename.

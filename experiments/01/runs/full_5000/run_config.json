@@ -1,0 +1,15 @@
+{
+  "experiment": "001_legacy",
+  "run": "full_5000",
+  "record_kind": "retrospective_archive_metadata",
+  "provenance": "Parameters copied from the archived result; not an original launch manifest or source snapshot",
+  "params": {
+    "AD_KAPPA": 30,
+    "AD_NITER": 5,
+    "AD_GAMMA": 0.15,
+    "LOG_SIGMA": 1.5,
+    "LOG_BETA": 0.3,
+    "N_IMAGES": 5000,
+    "RANDOM_SEED": 42
+  }
+}

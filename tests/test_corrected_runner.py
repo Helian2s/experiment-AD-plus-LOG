@@ -18,7 +18,7 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPERIMENT = ROOT / "experiments/003_corrected_full"
+EXPERIMENT = ROOT / "experiments/02"
 SPEC = importlib.util.spec_from_file_location(
     "corrected_runner", EXPERIMENT / "run_experiment.py")
 runner = importlib.util.module_from_spec(SPEC)

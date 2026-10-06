@@ -9,7 +9,7 @@ from unittest.mock import patch
 import numpy as np
 
 
-MODULE_PATH = Path(__file__).resolve().parents[1] / "experiments/003_corrected_full/preprocessing.py"
+MODULE_PATH = Path(__file__).resolve().parents[1] / "experiments/02/preprocessing.py"
 SPEC = importlib.util.spec_from_file_location("corrected_preprocessing", MODULE_PATH)
 preprocessing = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(preprocessing)

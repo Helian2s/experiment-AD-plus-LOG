@@ -9,7 +9,7 @@ if __name__ == "__main__":
     script = (
         Path(__file__).resolve().parent
         / "experiments"
-        / "003_corrected_full"
+        / "02"
         / "run_experiment.py"
     )
     sys.path.insert(0, str(script.parent))

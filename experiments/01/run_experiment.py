@@ -1,6 +1,6 @@
 """
 Експеримент: порівняння AD, AD+LoG і baseline для виявлення об'єктів
-Датасет: COCO val2017 (5 зображень)
+Датасет: COCO val2017 (кількість зображень задається через --images)
 Детектор: YOLO11n (заморожений)
 
 Reconstructed legacy code, not an original execution snapshot. See README.md.
@@ -8,6 +8,11 @@ Known scientific limitations are intentionally retained.
 """
 
 import os
+import argparse
+from datetime import datetime, timezone
+import re
+import shutil
+import uuid
 import cv2
 import numpy as np
 import json
@@ -25,8 +30,8 @@ PROJECT_ROOT   = os.path.dirname(os.path.dirname(EXPERIMENT_DIR))
 COCO_IMG_DIR   = os.path.join(PROJECT_ROOT, 'shared', 'coco', 'images', 'val2017')
 COCO_ANN_FILE  = os.path.join(PROJECT_ROOT, 'shared', 'coco', 'annotations', 'instances_val2017.json')
 MODEL_PATH     = os.path.join(PROJECT_ROOT, 'shared', 'yolo11n.pt')
-RESULTS_DIR    = EXPERIMENT_DIR
-N_IMAGES       = 5       # кількість зображень для експерименту
+RESULTS_DIR    = os.path.join(EXPERIMENT_DIR, 'runs')
+N_IMAGES       = 5000       # кількість зображень для експерименту
 RANDOM_SEED    = 42
 
 # Параметри анізотропної дифузії
@@ -203,15 +208,50 @@ def compute_correlations(img_ad, log_map):
 
 # ── Головна функція ───────────────────────────────────────────────────────────
 
+def configure_run(argv=None):
+    """Select execution settings without changing the legacy algorithms."""
+    global N_IMAGES, RESULTS_DIR
+    parser = argparse.ArgumentParser(description="Run the reconstructed legacy protocol")
+    parser.add_argument('--images', type=int, default=N_IMAGES)
+    parser.add_argument('--run-name', help="New directory name under this version's runs/")
+    arguments = parser.parse_args(argv)
+    if not 1 <= arguments.images <= 5000:
+        parser.error('--images must be between 1 and 5000')
+    name = arguments.run_name
+    if name is None:
+        stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+        name = f"images_{arguments.images}_{stamp}_{uuid.uuid4().hex[:8]}"
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]*', name):
+        parser.error('--run-name must contain only ASCII letters, digits, underscores or hyphens')
+    directory = os.path.join(EXPERIMENT_DIR, 'runs', name)
+    if os.path.lexists(directory):
+        raise FileExistsError(f"Refusing to reuse an existing run directory: {directory}")
+    N_IMAGES = arguments.images
+    RESULTS_DIR = directory
+
+
 def main():
     out_path = os.path.join(RESULTS_DIR, 'results.json')
     if os.path.lexists(out_path):
         raise FileExistsError(
-            f"Refusing to overwrite {out_path}. Copy only run_experiment.py "
-            "to a new folder under experiments/ for a new run."
+            f"Refusing to overwrite {out_path}. Select a new --run-name."
         )
     if not os.path.isfile(MODEL_PATH):
         raise FileNotFoundError(f"Local model weights not found: {MODEL_PATH}")
+
+    os.makedirs(RESULTS_DIR, exist_ok=False)
+    configuration = {
+        'experiment': '01',
+        'provenance': 'New execution of reconstructed legacy code; not a historical rerun snapshot',
+        'params': {key: globals()[key] for key in (
+            'AD_KAPPA', 'AD_NITER', 'AD_GAMMA', 'LOG_SIGMA', 'LOG_BETA',
+            'N_IMAGES', 'RANDOM_SEED')},
+    }
+    with open(os.path.join(RESULTS_DIR, 'run_config.json'), 'x', encoding='utf-8') as stream:
+        json.dump(configuration, stream, indent=2)
+    snapshot = os.path.join(RESULTS_DIR, 'source_snapshot')
+    os.mkdir(snapshot)
+    shutil.copyfile(__file__, os.path.join(snapshot, 'run_experiment.py'))
 
     print("=" * 60)
     print("Експеримент: AD + LoG для виявлення об'єктів")
@@ -367,4 +407,5 @@ def main():
     print("Експеримент завершено.")
 
 if __name__ == '__main__':
+    configure_run()
     main()
