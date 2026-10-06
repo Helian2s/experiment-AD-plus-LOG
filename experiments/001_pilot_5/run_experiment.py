@@ -1,7 +1,10 @@
 """
 Експеримент: порівняння AD, AD+LoG і baseline для виявлення об'єктів
-Датасет: COCO val2017 (500 зображень)
+Датасет: COCO val2017 (5 зображень)
 Детектор: YOLO11n (заморожений)
+
+Reconstructed legacy code, not an original execution snapshot. See README.md.
+Known scientific limitations are intentionally retained.
 """
 
 import os
@@ -17,11 +20,13 @@ from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
 
 # ── Налаштування ─────────────────────────────────────────────────────────────
-PROJECT_ROOT   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-COCO_IMG_DIR   = os.path.join(PROJECT_ROOT, 'coco', 'images', 'val2017')
-COCO_ANN_FILE  = os.path.join(PROJECT_ROOT, 'coco', 'annotations', 'instances_val2017.json')
-RESULTS_DIR    = os.path.join(PROJECT_ROOT, 'results')
-N_IMAGES       = 500       # кількість зображень для експерименту
+EXPERIMENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT   = os.path.dirname(os.path.dirname(EXPERIMENT_DIR))
+COCO_IMG_DIR   = os.path.join(PROJECT_ROOT, 'shared', 'coco', 'images', 'val2017')
+COCO_ANN_FILE  = os.path.join(PROJECT_ROOT, 'shared', 'coco', 'annotations', 'instances_val2017.json')
+MODEL_PATH     = os.path.join(PROJECT_ROOT, 'shared', 'yolo11n.pt')
+RESULTS_DIR    = EXPERIMENT_DIR
+N_IMAGES       = 5       # кількість зображень для експерименту
 RANDOM_SEED    = 42
 
 # Параметри анізотропної дифузії
@@ -45,8 +50,6 @@ DEGRADATIONS = {
                               add_gaussian_noise(img, sigma=25), 0.5),
                           beta=1.0, A=0.9),
 }
-
-os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # ── Функції деградації ────────────────────────────────────────────────────────
 
@@ -201,6 +204,15 @@ def compute_correlations(img_ad, log_map):
 # ── Головна функція ───────────────────────────────────────────────────────────
 
 def main():
+    out_path = os.path.join(RESULTS_DIR, 'results.json')
+    if os.path.lexists(out_path):
+        raise FileExistsError(
+            f"Refusing to overwrite {out_path}. Copy only run_experiment.py "
+            "to a new folder under experiments/ for a new run."
+        )
+    if not os.path.isfile(MODEL_PATH):
+        raise FileNotFoundError(f"Local model weights not found: {MODEL_PATH}")
+
     print("=" * 60)
     print("Експеримент: AD + LoG для виявлення об'єктів")
     print("=" * 60)
@@ -215,7 +227,7 @@ def main():
 
     # Завантажити модель YOLO (заморожена — ваги не змінюються)
     print("Завантаження YOLO11n...")
-    model = YOLO('yolo11n.pt')
+    model = YOLO(MODEL_PATH)
     model.fuse()  # оптимізація для inference
 
     # Завантажити анотації COCO
@@ -348,8 +360,7 @@ def main():
         }
     }
 
-    out_path = os.path.join(RESULTS_DIR, 'results.json')
-    with open(out_path, 'w', encoding='utf–8') as f:
+    with open(out_path, 'x', encoding='utf-8') as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     print(f"\nРезультати збережено у: {out_path}")

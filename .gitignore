@@ -217,5 +217,17 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Preserve the log accompanying the archived experiment results.
-!/results/full_5000.AfmLxA/run.log
+# Experiment logs belong alongside each experiment's code and results.
+!/experiments/*/run.log
+
+# Shared local inputs and disposable artifacts are not experiment results.
+/shared/
+/tmp/
+/output/
+/docs/
+/.idea/
+
+# Corrected runs retain summaries and provenance; bulky raw data stays local.
+!/experiments/*/runs/*/run.log
+/experiments/*/runs/*/detections/
+/experiments/*/runs/smoke_*/
